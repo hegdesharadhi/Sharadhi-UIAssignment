@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Check the heading 1`] = `
+<h2>
+  Points Rewarded To Customer
+</h2>
+`;
+
+exports[`Table Check the table headings 1`] = `
+<th>
+  Name
+</th>
+`;
+
+exports[`Table Check the table headings 2`] = `
+<th>
+  Month
+</th>
+`;
+
+exports[`Table Check the table headings 3`] = `
+<th>
+  Transaction
+</th>
+`;
+
+exports[`Table Check the table headings 4`] = `
+<th>
+  Reward Points
+</th>
+`;
+
+exports[`Table Check the table headings 5`] = `
+<th>
+  Total Points
+</th>
+`;
+
+exports[`Table Check the table values 1`] = `
+Array [
+  <td>
+    Smith
+  </td>,
+  <td>
+    Smith
+  </td>,
+  <td>
+    Smith
+  </td>,
+]
+`;
+
+exports[`Table Check the table values 2`] = `
+Array [
+  <td>
+    762
+  </td>,
+  <td>
+    2
+  </td>,
+  <td>
+    25
+  </td>,
+  <td>
+    762
+  </td>,
+  <td>
+    762
+  </td>,
+  <td>
+    2
+  </td>,
+  <td>
+    125
+  </td>,
+  <td>
+    2
+  </td>,
+  <td>
+    25
+  </td>,
+  <td>
+    2
+  </td>,
+  <td>
+    2
+  </td>,
+]
+`;
+
+exports[`Table Check the table values 3`] = `
+Array [
+  <td>
+    578
+  </td>,
+]
+`;
+
+exports[`Table Check the table values 4`] = `
+Array [
+  <td>
+    762
+  </td>,
+  <td>
+    762
+  </td>,
+  <td>
+    762
+  </td>,
+]
+`;
+
+exports[`Table Check the table values 5`] = `
+Array [
+  <td>
+    698
+  </td>,
+  <td>
+    698
+  </td>,
+  <td>
+    698
+  </td>,
+]
+`;

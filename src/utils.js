@@ -13,16 +13,17 @@ export function calculatePoints(amt) {
 
 export function buildInfo(data) {
   const pointsPerTransaction = data.map((transaction) => {
-    let points = calculatePoints(transaction.amt)
-    const month = new Date(transaction.transactionDt).getMonth() + 1 // Gets the month from the transaction date. Added 1 to avoid confusion as it starts from 0.Ex: Jan is returned as 0
+    const points = calculatePoints(transaction.amt)
+    const month = new Date(transaction.transactionDate).getMonth() + 1 // Gets the month from the transaction date. Added 1 to avoid confusion as it starts from 0.Ex: Jan is returned as 0
     return { ...transaction, points, month } //Returns the object after calculating the points and transaction month
   })
-  let byCustomer = {}
-  let totalPointsByCustomer = {}
+  const pointsByCustomer = {}
+  const totalPointsByCustomer = {}
   pointsPerTransaction.forEach((pointsPerTransaction) => {
-    let { custid, name, month, points, transactionDt } = pointsPerTransaction
-    if (!byCustomer[custid]) {
-      byCustomer[custid] = [] // Array is creating for each, with the same id
+    const { custid, name, month, points, transactionDate } =
+      pointsPerTransaction
+    if (!pointsByCustomer[custid]) {
+      pointsByCustomer[custid] = [] // Array is creating for each, with the same id
     }
     if (!totalPointsByCustomer[custid]) {
       totalPointsByCustomer[custid] = 0 // Initializing the total reward points to 0
@@ -30,17 +31,17 @@ export function buildInfo(data) {
 
     totalPointsByCustomer[custid] += points
 
-    if (byCustomer[custid][month]) {
-      // If particular id and the month already exists in byCustomer object, it adds the points, month and num of transactions
-      byCustomer[custid][month].points += points
-      byCustomer[custid][month].monthNumber = month
-      byCustomer[custid][month].numTransactions++
+    if (pointsByCustomer[custid][month]) {
+      // If particular id and the month already exists in pointsByCustomer object, it adds the points, month and num of transactions
+      pointsByCustomer[custid][month].points += points
+      pointsByCustomer[custid][month].monthNumber = month
+      pointsByCustomer[custid][month].numTransactions++
     } else {
-      byCustomer[custid][month] = {
+      pointsByCustomer[custid][month] = {
         //if not, object is created
         custid,
         name,
-        month: new Date(transactionDt).toLocaleString('en-us', {
+        month: new Date(transactionDate).toLocaleString('en-us', {
           month: 'long',
         }),
         numTransactions: 1,
@@ -50,18 +51,21 @@ export function buildInfo(data) {
   })
 
   return {
-    summaryByCustomer: buildSummaryInfo(byCustomer, totalPointsByCustomer),
+    summaryByCustomer: buildSummaryInfo(
+      pointsByCustomer,
+      totalPointsByCustomer
+    ),
     pointsPerTransaction,
   }
 }
 
 //Function to create the final data
-export function buildSummaryInfo(byCustomer, totalPointsByCustomer) {
-  let summary = []
-  for (let custKey in byCustomer) {
-    byCustomer[custKey].forEach((cRow) => {
-      cRow.totalPointsByCustomer = totalPointsByCustomer[custKey]
-      summary.push(cRow)
+export function buildSummaryInfo(pointsByCustomer, totalPointsByCustomer) {
+  const summary = []
+  for (const custKey in pointsByCustomer) {
+    pointsByCustomer[custKey].forEach((customer) => {
+      customer.totalPointsByCustomer = totalPointsByCustomer[custKey]
+      summary.push(customer)
     })
   }
   return summary // final data is returned

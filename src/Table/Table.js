@@ -19,9 +19,9 @@ const Table = (props) => {
         </thead>
 
         {data &&
-          data.map((item) => {
+          data.map((item, index) => {
             return (
-              <tbody>
+              <tbody key={index}>
                 <tr>
                   <td>{item.name}</td>
                   <td>{item.month}</td>

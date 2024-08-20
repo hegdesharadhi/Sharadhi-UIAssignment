@@ -1,23 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import fetch from './api/dataservice'
-import Table from './Table/Table'
-import { buildInfo } from './utils'
+import React from 'react'
+import Loading from './Loading/Loading'
 
 function App() {
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    fetch().then((data) => {
-      const info = buildInfo(data)
-      setData(info)
-    })
-  }, [])
-
-  if (data == null) {
-    return <div>Loading...</div>
-  }
   return (
     <div className="container">
-      <Table data={data.summaryByCustomer} />
+      <Loading />
     </div>
   )
 }

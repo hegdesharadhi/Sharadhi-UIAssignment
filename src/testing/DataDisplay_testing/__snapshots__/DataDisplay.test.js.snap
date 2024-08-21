@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading Check the Loading when data is empty 1`] = `
+exports[`DataDisplay Check the DataDisplay when data is empty 1`] = `
 <div>
   Loading...
 </div>

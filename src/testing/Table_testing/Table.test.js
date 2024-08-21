@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Table from './Table'
+import Table from '../../components/Table'
 import { data } from './mockData'
 
 describe('Table', () => {

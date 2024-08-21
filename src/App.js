@@ -1,10 +1,10 @@
 import React from 'react'
-import Loading from './Loading/Loading'
+import DataDisplay from './components/DataDisplay'
 
 function App() {
   return (
     <div className="container">
-      <Loading />
+      <DataDisplay />
     </div>
   )
 }

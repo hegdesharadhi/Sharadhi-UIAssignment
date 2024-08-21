@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { calculateTotalPoints } from '../utils'
 import fetch from '../api/data'
-import Table from '../Table/Table'
+import Table from './Table'
 
-const Loading = () => {
+const DataDisplay = () => {
   const [data, setData] = useState(null) // Setting the initial value to null
   useEffect(() => {
     try {
@@ -26,4 +26,4 @@ const Loading = () => {
   )
 }
 
-export default Loading
+export default DataDisplay

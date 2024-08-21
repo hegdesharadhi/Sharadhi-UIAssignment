@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { buildInfo } from '../utils'
+import { calculateTotalPoints } from '../utils'
 import fetch from '../api/data'
 import Table from '../Table/Table'
 
@@ -8,7 +8,7 @@ const Loading = () => {
   useEffect(() => {
     try {
       fetch().then((data) => {
-        const info = buildInfo(data)
+        const info = calculateTotalPoints(data)
         setData(info)
       })
     } catch (error) {
@@ -21,7 +21,7 @@ const Loading = () => {
   }
   return (
     <div>
-      <Table data={data.summaryByCustomer} />
+      <Table data={data.summaryOfCustomer} />
     </div>
   )
 }

@@ -11,7 +11,7 @@ export function calculatePoints(amt) {
   return points
 }
 
-export function buildInfo(data) {
+export function calculateTotalPoints(data) {
   const pointsPerTransaction = data.map((transaction) => {
     const points = calculatePoints(transaction.amt)
     const month = new Date(transaction.transactionDate).getMonth() + 1 // Gets the month from the transaction date. Added 1 to avoid confusion as it starts from 0.Ex: Jan is returned as 0
@@ -51,16 +51,13 @@ export function buildInfo(data) {
   })
 
   return {
-    summaryByCustomer: buildSummaryInfo(
-      pointsByCustomer,
-      totalPointsByCustomer
-    ),
+    summaryOfCustomer: result(pointsByCustomer, totalPointsByCustomer),
     pointsPerTransaction,
   }
 }
 
 //Function to create the final data
-export function buildSummaryInfo(pointsByCustomer, totalPointsByCustomer) {
+export function result(pointsByCustomer, totalPointsByCustomer) {
   const summary = []
   for (const custKey in pointsByCustomer) {
     pointsByCustomer[custKey].forEach((customer) => {
